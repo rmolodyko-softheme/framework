@@ -22,7 +22,7 @@ export class Injector {
 
     constructor(private parent: Injector = null) {}
 
-    get(type: Type) {
+    get<T>(type: { new(): T }): T {
         // Find instance in current and parent injectors
         const instance = this.find(type, 'instances');
         if (instance) {
